@@ -11,9 +11,8 @@ def send_packets(target_ip, interface, num_packets, duration):
     packet = Ether() / IP(dst=target_ip) / TCP()
     end_time = time.time() + duration
     packet_count = 0
-
     while time.time() < end_time and packet_count < num_packets:
-        sendp(packet, iface=interface)
+        sendp(packet, iface=interface, verbose=0)  # Turn off verbosity for quiet execution
         packet_count += 1
 
 if __name__ == "__main__":
